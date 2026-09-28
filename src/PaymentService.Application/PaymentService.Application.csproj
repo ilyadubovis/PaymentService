@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+	<ProjectReference Include="..\\PaymentService.Domain\\PaymentService.Domain.csproj" />
+	<PackageReference Include="MediatR" />
+  </ItemGroup>
+</Project>

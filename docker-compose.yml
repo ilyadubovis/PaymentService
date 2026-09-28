@@ -1,0 +1,24 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: paymentservice-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Your_strong_password123"
+    ports:
+      - "1433:1433"
+    volumes:
+      - paymentservice_sql_data:/var/opt/mssql
+
+  redis:
+    image: redis:7-alpine
+    container_name: paymentservice-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - paymentservice_redis_data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+
+volumes:
+  paymentservice_sql_data:
+  paymentservice_redis_data:
